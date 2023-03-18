@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: greets2
+  namespace: student
+
+spec:
+  backoffLimit: 3
+  activeDeadlineSeconds: 60
+  template:
+    spec:
+      containers:
+        - name: greets
+          image: busybox
+          command: 
+           - /bin/sh
+           - -c
+           - |
+             echo Hello, Student! Start job... 
+             sleep 25 
+             echo Job is done, by!
+             exit 0
+
+      restartPolicy: Never    
