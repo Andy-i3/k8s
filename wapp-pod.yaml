@@ -1,0 +1,15 @@
+kind: Pod
+apiVersion: v1
+
+metadata:
+  name: wapp-pod2
+  namespace: training
+
+spec:
+  nodeSelector:
+    cpu: 16core              
+
+  containers:
+    - image: a0z9/dock:wapp.0.5
+      name: wapp-pod-c2
+        
