@@ -2,11 +2,11 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: greets2
-  namespace: student
+  namespace: training
 
 spec:
   backoffLimit: 3
-  activeDeadlineSeconds: 60
+  activeDeadlineSeconds: 120
   template:
     spec:
       containers:
@@ -19,6 +19,7 @@ spec:
              echo Hello, Student! Start job... 
              sleep 25 
              echo Job is done, by!
-             exit 0
+             exit 1 
 
-      restartPolicy: Never    
+      restartPolicy: Never
+

@@ -2,16 +2,18 @@ apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: greets-cron
-  namespace: student
+  namespace: training
 
 spec:
   schedule: "*/2 * * * 1-5"
   concurrencyPolicy: Allow
+  successfulJobsHistoryLimit: 10
+  failedJobsHistoryLimit: 3
   jobTemplate:
         spec:
           backoffLimit: 2
           activeDeadlineSeconds: 60
-          ttlSecondsAfterFinished: 30 # Job del after 15s
+          ttlSecondsAfterFinished: 15 # Job del after 15s
           template:
             spec:
               containers:
